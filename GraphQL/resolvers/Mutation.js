@@ -1,21 +1,29 @@
 const Mutation = {
-  createDraft(root, args, context) {
-    return context.prisma.createPost({
-      title: args.title,
+  createUser: async (root, args, { prisma }, info) => {
+    const checkEmail = await prisma.users({
+      where: {
+        email: args.email,
+      }
+    });
+
+    if(checkEmail.length > 0) {
+      throw new Error('Email already exists!');
+    }
+
+    return prisma.createUser(args, info);
+  },
+  createPost: async (root, {title, userId}, { prisma }, info) => {
+    const post = await prisma.createPost({
+      title,
       author: {
-        connect: { id: args.userId },
-      },
-    });
-  },
-  publish(root, args, context) {
-    return context.prisma.updatePost({
-      where: { id: args.postId },
-      data: { published: true },
-    });
-  },
-  createUser(root, args, context) {
-    return context.prisma.createUser({ name: args.name });
-  },
+        connect:{
+          id: userId
+        }
+      }
+    }, info);
+
+    return post;
+  }
 };
 
 module.exports = Mutation;

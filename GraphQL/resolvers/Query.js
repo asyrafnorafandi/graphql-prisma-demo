@@ -1,17 +1,10 @@
 const Query = {
-    publishedPosts(root, args, context) {
-      return context.prisma.posts({ where: { published: true } });
-    },
-    post(root, args, context) {
-      return context.prisma.post({ id: args.postId });
-    },
-    postsByUser(root, args, context) {
-      return context.prisma
-        .user({
-          id: args.userId,
-        })
-        .posts();
-    },
+  users: async (root, args, { prisma }, info) => {
+    return prisma.users(args, info);
+  },
+  posts: async (root, args, { prisma }, info) => {
+    return prisma.posts(args,info);
+  },
 };
 
 module.exports = Query;

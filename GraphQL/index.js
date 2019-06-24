@@ -1,5 +1,5 @@
 const resolvers =  require('./resolvers');
-const { prisma } =  require('../prisma/prisma-client');
+const { prisma } =  require('../prisma/generated/prisma-client');
 const { GraphQLServer } =  require('graphql-yoga');
 
 const server = new GraphQLServer({

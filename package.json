@@ -1,21 +1,24 @@
 {
-  "name": "graphqlvsrest",
+  "name": "GraphQL Example",
   "version": "1.0.0",
-  "description": "",
+  "description": "GraphQL with prisma demo example",
   "main": "index.js",
   "scripts": {
     "start": "node GraphQL/index.js",
+    "dev": "nodemon GraphQL/index.js -e js,graphql",
     "prisma:deploy": "cd prisma && prisma deploy",
     "prisma:generate": "cd prisma && prisma generate",
     "prisma:setup": "cd prisma && prisma deploy && prisma generate"
   },
-  "author": "",
+  "author": "Asyraf Norafandi",
   "license": "ISC",
   "dependencies": {
     "graphql-yoga": "^1.18.0",
     "prisma-client-lib": "^1.34.0"
   },
   "devDependencies": {
+    "@types/node": "^12.0.10",
+    "nodemon": "^1.19.1",
     "prisma": "^1.34.0"
   }
 }
