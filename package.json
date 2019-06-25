@@ -1,5 +1,5 @@
 {
-  "name": "GraphQL Example",
+  "name": "graphql-prisma-demo",
   "version": "1.0.0",
   "description": "GraphQL with prisma demo example",
   "main": "index.js",
